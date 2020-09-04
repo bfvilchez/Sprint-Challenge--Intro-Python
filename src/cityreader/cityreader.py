@@ -25,7 +25,7 @@ class City:
     self.lat = lat
 
   def __str__(self):
-    return f"{self.name} == (lat: {self.lat}, lon: {self.lon}))"
+    return f"City({self.name}, {self.lat},{self.lon})"
 
 
 
@@ -35,12 +35,10 @@ def cityreader(cities=[]):
   with open("/Users/brianvilchez/Documents/Python/Sprint_Challlenges/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv", "r") as cities_file:
 
     city_file = csv.reader(cities_file)
+    next(city_file)
 
     for line in city_file: 
-      cities.append(City(line[0],line[3], line[4]))
-      cities.pop(0)
-  
-    print(cities)
+      cities.append(City(line[0], float(line[3]), float(line[4])))
   return cities
 
 cityreader(cities)
