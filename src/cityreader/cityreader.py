@@ -14,15 +14,34 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
+import csv
+from csv import reader
+
+class City: 
+  def __init__(self, name, lat, lon):
+    self.name = name 
+    self.lon = lon
+    self.lat = lat
+
+  def __str__(self):
+    return f"{self.name} == (lat: {self.lat}, lon: {self.lon}))"
+
+
+
 cities = []
 
 def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # Ensure that the lat and lon valuse are all floats
-  # For each city record, create a new City instance and add it to the 
-  # `cities` list
-    
-    return cities
+  with open("/Users/brianvilchez/Documents/Python/Sprint_Challlenges/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv", "r") as cities_file:
+
+    city_file = csv.reader(cities_file)
+
+    for line in city_file: 
+      cities.append(City(line[0],line[3], line[4]))
+      cities.pop(0)
+  
+    print(cities)
+  return cities
 
 cityreader(cities)
 
