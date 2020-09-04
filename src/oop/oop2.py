@@ -4,10 +4,22 @@
 # object is constructed.
 
 class GroundVehicle():
-    def __init__(self, num_wheels):
+    def __init__(self, num_wheels = 4):
         self.num_wheels = num_wheels
 
-    # TODO
+    def drive(self):
+        return "vroooom"
+
+    def police(self):
+        return """ Woop-woop! That's the sound of da police 
+                   Woop-woop! That's the sound of da beast
+                   Woop-woop! That's the sound of da police
+                   Woop-woop! That's the sound of da beast (Yes indeed)
+                   Woop-woop! That's the sound of da police
+                   Woop-woop! That's the sound of da beast
+                   Woop-woop! That's the sound of da police
+                   Woop-woop! That's the sound of da beast (Yes indeed) """     
+
 
 
 # Subclass Motorcycle from GroundVehicle.
@@ -17,8 +29,27 @@ class GroundVehicle():
 #
 # Override the drive() method in Motorcycle so that it returns "BRAAAP!!"
 
-# TODO
+class Motorcycle(GroundVehicle):
+    def __init__(self, wheels = 2):
+        super().__init__(wheels)
+    
+    def drive(self):
+        return "BRAAAP!!"
 
+    def randomStatement(self):
+        return "Motorcycles are too dangerous, nobody wants to be a pancake"
+
+    def police(self): 
+        return """Just a cast away, an island lost at sea, oh
+                  Another lonely day, no one here but me, oh
+                  More loneliness than any man could bear
+                  Rescue me before I fall into despair, oh
+                  I'll send an SOS to the world
+                  I'll send an SOS to the world
+                  I hope that someone gets my
+                  I hope that someone gets my
+                  I hope that someone gets my message in a bottle, yeah
+                  Message in a bottle yeah """
 vehicles = [
     GroundVehicle(),
     GroundVehicle(),
@@ -30,3 +61,7 @@ vehicles = [
 # Go through the vehicles list and print the result of calling drive() on each.
 
 # TODO
+for vehicle in vehicles: 
+    print(vehicle.drive())
+    print(vehicle.num_wheels)
+    print(vehicle.police())
